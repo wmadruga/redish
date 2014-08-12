@@ -1,5 +1,23 @@
 #!/bin/bash
 
 function help() {
-  echo "implement help..."
+  printf " \n"
+  printf "$ORANGE[read|reader|r]$GREEN \n"
+  printf "\t opens the reader command line. \n"
+  printf "\t provide the key to search \n"
+  printf "\t$READER_PROMPT mykey \n"
+  printf " \n"
+
+  printf "$ORANGE[write|writer|w]$GREEN \n"
+  printf "\t opens the writer command line. \n"
+  printf "\t provide the key and the value separated by a space \n"
+  printf "\t Key and Value can be setup with two words and a space between each \n"
+  printf "\t if you quote them. \n"
+  printf "\t$WRITER_PROMPT mykey myvalue \n"
+  printf "\t$WRITER_PROMPT mykey \"my value\" \n"
+  printf "\t$WRITER_PROMPT \"mykey\" \"myvalue\" \n"
+  printf "\t$WRITER_PROMPT \"my key\" \"myvalue\" \n"
+  printf "\t$WRITER_PROMPT \"my key\" \"my value\" \n"
+  printf " \n"
+
 }

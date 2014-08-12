@@ -21,7 +21,9 @@ while [[ 1 -eq 1 ]]; do
     w ) writer ;;
     quit ) exit 0 ;;
     q ) exit 0 ;;
-    * ) help ;;
+    help ) help ;;
+    h ) help ;;
+    * ) ;;
   esac
 
 done
