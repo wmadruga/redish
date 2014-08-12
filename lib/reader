@@ -1,0 +1,40 @@
+#!/bin/bash
+
+function reader() {
+  local redis=`redis-cli ping`
+
+  if [[ $redis = 'PONG' ]]; then
+
+    echo "$QUIT_INFO"
+
+    local key;
+    while [[ 1 -eq 1 ]]; do
+
+      printf "$READER_PROMPT"
+      read -r key
+
+      case $key in
+        quit ) return ;;
+        q ) return ;;
+        * )
+          if [[ -n $key ]]; then
+
+            local result=`redis-cli GET $key`
+            if [[ -z $result ]]; then
+              echo "$RED key '$key' does not exist $REST"
+            else
+              echo "$CYAN $key = $result $RESET"
+            fi
+
+          else
+            echo "$RED inform a key."
+          fi
+          ;;
+      esac
+
+    done
+
+  else
+    echo "$NOT_RUNNING"
+  fi
+}

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+RESET=$(tput sgr0)
+RED=$(tput setaf 1)
+BLUE=$(tput setaf 4)
+ORANGE=$(tput setaf 3)
+GREEN=$(tput setaf 2)
+PINK=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+REGEX="\s" # has a space
+
+# Messages
+
+NOT_RUNNING="$RED redis server is currently not running. $RESET"
+MAIN_PROMPT="$PINK [read | write | quit | help] >> $GREEN "
+READER_PROMPT="$ORANGE key reader >> $GREEN "
+WRITER_PROMPT="$BLUE key writer >> $GREEN "
+QUIT_INFO="$RED type 'q' or 'quit' to exit $RESET"
+WRITER_SYNTAX_ERROR="$RED inform key and value separated by a space. Provide a quoted value if you need a space. "

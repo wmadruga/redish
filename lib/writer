@@ -1,0 +1,40 @@
+#!/bin/bash
+
+function writer() {
+  local redis=`redis-cli ping`
+
+  if [[ $redis = 'PONG' ]]; then
+
+    echo "$QUIT_INFO"
+
+    local key;
+    while [[ 1 -eq 1 ]]; do
+
+      printf "$WRITER_PROMPT"
+      read -r keyValue
+
+      case $keyValue in
+        quit ) return ;;
+        q ) return ;;
+        * )
+          if [[ -n $keyValue ]]; then
+
+            if [[ $keyValue =~ $REGEX ]]; then
+
+              local result=`redis-cli SET $keyValue`
+
+            else
+              echo "$WRITER_SYNTAX_ERROR"
+            fi
+          else
+              echo "$WRITER_SYNTAX_ERROR"
+          fi
+          ;;
+      esac
+
+    done
+
+  else
+    echo "$NOT_RUNNING"
+  fi
+}
