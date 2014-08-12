@@ -1,4 +1,6 @@
 redish
 ======
 
-redis shellscript tasks for fun 
+Redis simple tasks shell script.
+
+Just for fun cos I could use redis-cli directly :P
